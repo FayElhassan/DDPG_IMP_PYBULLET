@@ -30,6 +30,6 @@ class ReplayBuffer:
         self.buffer.append((state, action, reward, next_state, done))
 
     def sample(self, batch_size):
-        batch = np.random.choice(len(self.buffer), batch_size, replace=False)    #randombly sample experiences
+        batch = np.random.choice(len(self.buffer), batch_size, replace=False)    #randomly sample experiences
         states, actions, rewards, next_states, dones = zip(*[self.buffer[i] for i in batch])
         return states, actions, rewards, next_states, dones
