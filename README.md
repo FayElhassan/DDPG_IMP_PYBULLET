@@ -10,7 +10,18 @@ This repository contains a Deep Deterministic Policy Gradient (DDPG) implementat
 - `models.py`: Contains neural network architectures for the `Actor` and `Critic`.
 - `ddpg.py`: Contains the implementation of the DDPG agent (`DDPGAgent`).
 - `train.py`: The main script that contains the training loop.
+- `env_config.py`: Configuration file specifying different environments available for training.
 
+## Environment Configuration
+
+The env_config.py file provides a dictionary of environment names and their respective string identifiers. By default, it includes environments like:
+
+- HalfCheetah: HalfCheetahBulletEnv-v0
+- Ant: AntBulletEnv-v0
+- Hopper: HopperBulletEnv-v0
+- Walker2D: Walker2DBulletEnv-v0
+- Humanoid: HumanoidBulletEnv-v0
+You can easily extend this list by adding more environments to the env_config.py file. To train on a specific environment, set the env_name variable in train.py to the desired environment name from the dictionary.
 ## Setup
 
 1. Install required libraries:
