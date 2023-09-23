@@ -7,6 +7,11 @@ import pybullet_data
 from tensorboardX import SummaryWriter
 from ddpg import DDPGAgent
 from utils import ReplayBuffer
+from env_config import environments
+# Select the environment to use from PyBullet
+env_name = "HalfCheetah"  # Or any other key from the environments dictionary
+env_id = environments[env_name]
+env = gym.make(env_id)
 # Define hyperparameters for quick testing
 state_dim = 26
 action_dim = 6
@@ -20,9 +25,7 @@ gamma = 0.99
 tau = 0.005
 
 
-# Create the HalfCheetah environment from PyBullet
-env_hc="HalfCheetahBulletEnv-v0"
-env = gym.make(env_hc)
+
 max_action = env.action_space.high[0]
 
 # Initialize the DDPG agent
