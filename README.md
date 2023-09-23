@@ -21,6 +21,8 @@ The env_config.py file provides a dictionary of environment names and their resp
 - Hopper: HopperBulletEnv-v0
 - Walker2D: Walker2DBulletEnv-v0
 - Humanoid: HumanoidBulletEnv-v0
+
+
 You can easily extend this list by adding more environments to the env_config.py file. To train on a specific environment, set the env_name variable in train.py to the desired environment name from the dictionary.
 ## Setup
 
