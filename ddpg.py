@@ -156,7 +156,7 @@ class DDPGAgent:
 
         # Sample a PRNG key for the soft update of target networks
         rng_soft_update, subkey = jax.random.split(rng_soft_update)
-        @jax.jit
+    @jax.jit
     def soft_update(target_params: hk.Params, online_params: hk.Params, tau: float = 0.005) -> hk.Params:
         return jax.tree_map(lambda x, y: (1 - tau) * x + tau * y, target_params, online_params)
 
