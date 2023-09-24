@@ -2,8 +2,8 @@ import jax
 import jax.numpy as jnp
 import haiku as hk
 import optax
-from utils import ScheduledNoise
-from models import Actor, Critic
+from DDPG_IMP_PYBULLET.utils import ScheduledNoise
+from DDPG_IMP_PYBULLET.models import Actor, Critic
 
 class DDPGAgent:
     def __init__(self, state_dim, action_dim, max_action ,lr_actor=1e-4, lr_critic=1e-3, gamma=0.99, tau=0.001):
