@@ -5,9 +5,9 @@ import gym
 import pybullet_envs
 import pybullet_data
 from tensorboardX import SummaryWriter
-from ddpg import DDPGAgent
-from utils import ReplayBuffer
-from env_config import environments
+from DDPG_IMP_PYBULLET.ddpg import DDPGAgent
+from DDPG_IMP_PYBULLET.utils import ReplayBuffer
+from DDPG_IMP_PYBULLET.env_config import environments
 # Select the environment to use from PyBullet
 env_name = "HalfCheetah"  # Or any other key from the environments dictionary
 env_id = environments[env_name]
