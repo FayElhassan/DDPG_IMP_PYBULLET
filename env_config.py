@@ -5,5 +5,6 @@ environments = {
     "Hopper": "HopperBulletEnv-v0",
     "InvertedPendulum": "InvertedPendulumBulletEnv-v0",
     "Humanoid": "HumanoidBulletEnv-v0",
-    # Add more environments as needed
+    "Walker":"Walker2DBulletEnv-v0",
+    #Add more environments as needed
 }
