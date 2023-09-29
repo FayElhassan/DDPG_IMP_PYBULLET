@@ -4,8 +4,9 @@ import haiku as hk
 import optax
 from utils import ScheduledNoise
 from models import Actor, Critic
-
-
+@jax.jit
+def soft_update(target_params: hk.Params, online_params: hk.Params, tau: float = 0.005) -> hk.Params: 
+    return jax.tree_map(lambda x, y: (1 - tau) * x + tau * y, target_params, online_params)
 class TD3Agent:
     def __init__(self, state_dim, action_dim, max_action ,lr_actor=1e-4, lr_critic=1e-3, gamma=0.99, tau=0.001,policy_noise=0.2, noise_clip=0.5, policy_delay=2):
         self.gamma = gamma
@@ -222,9 +223,7 @@ class TD3Agent:
             updates, self.actor_opt_state = self.actor_opt.update(gradient, self.actor_opt_state)
             self.actor_params = optax.apply_updates(self.actor_params, updates)
                 
-    @jax.jit
-    def soft_update(target_params: hk.Params, online_params: hk.Params, tau: float = 0.005) -> hk.Params:
-        return jax.tree_map(lambda x, y: (1 - tau) * x + tau * y, target_params, online_params)
+   
             # Soft update of target networks
             self.target_actor_params = soft_update(self.target_actor_params, self.actor_params, self.tau)
             self.target_critic_params = soft_update(self.target_critic_params, self.critic_params, self.tau)
