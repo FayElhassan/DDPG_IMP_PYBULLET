@@ -6,6 +6,7 @@ import pybullet_envs
 import pybullet_data
 from tensorboardX import SummaryWriter
 from DDPG_IMP_PYBULLET.ddpg import DDPGAgent
+from DDPG_IMP_PYBULLET.TD3 import TD3Agent
 from DDPG_IMP_PYBULLET.utils import ReplayBuffer
 from DDPG_IMP_PYBULLET.env_config import environments
 # Select the environment to use from PyBullet
