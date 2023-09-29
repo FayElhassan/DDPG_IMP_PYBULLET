@@ -1,8 +1,8 @@
 
 
-# DDPG Implementation with PyBullet
+# DDPG & TD3 Implementation with PyBullet
 
-This repository contains a Deep Deterministic Policy Gradient (DDPG) implementation for reinforcement learning environments provided by PyBullet.
+This repository contains a Deep Deterministic Policy Gradient (DDPG) and Twin Delayed DDPG implementation for reinforcement learning environments provided by PyBullet.
 
 ## Structure
 
