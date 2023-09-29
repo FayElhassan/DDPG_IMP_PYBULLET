@@ -1,5 +1,5 @@
 import numpy as np
-
+import pickle 
 class ScheduledNoise:
     def __init__(self, decay_rate=0.00001):
         """Initialize parameters and noise process."""
@@ -33,3 +33,20 @@ class ReplayBuffer:
         batch = np.random.choice(len(self.buffer), batch_size, replace=False)    #randomly sample experiences
         states, actions, rewards, next_states, dones = zip(*[self.buffer[i] for i in batch])
         return states, actions, rewards, next_states, dones
+environments_data = {
+    "HalfCheetah": {"state_dim": 26, "action_dim": 6}
+}
+
+def load_params(directory):
+  with open(directory, 'rb') as handle:
+    params = pickle.load(handle)
+  print("dictionary have been loaded!")
+  return params
+
+def load_agent_from_params_file(agent_class, params_file_path, env_name):
+    state_dim = environments_data[env_name]["state_dim"]
+    action_dim = environments_data[env_name]["action_dim"]
+    policy_params = load_params(params_file_path)
+    agent = agent_class(state_dim, action_dim, 1.)
+    agent.actor_params = policy_params
+    return agent
