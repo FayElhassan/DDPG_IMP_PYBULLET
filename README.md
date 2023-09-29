@@ -9,6 +9,7 @@ This repository contains a Deep Deterministic Policy Gradient (DDPG) implementat
 - `utils.py`: Contains utility classes and functions such as `ScheduledNoise` and `ReplayBuffer`.
 - `models.py`: Contains neural network architectures for the `Actor` and `Critic`.
 - `ddpg.py`: Contains the implementation of the DDPG agent (`DDPGAgent`).
+- `TD3.py`: Contains the implementation of the DDPG agent (`TD3Agent`).
 - `train.py`: The main script that contains the training loop.
 - `env_config.py`: Configuration file specifying different environments available for training.
 
