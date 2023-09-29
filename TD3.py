@@ -1,7 +1,9 @@
-@jax.jit
-def soft_update(target_params: hk.Params, online_params: hk.Params, tau: float = 0.005) -> hk.Params:
-    return jax.tree_map(lambda x, y: (1 - tau) * x + tau * y, target_params, online_params)
-
+import jax
+import jax.numpy as jnp
+import haiku as hk
+import optax
+from DDPG_IMP_PYBULLET.utils import ScheduledNoise
+from DDPG_IMP_PYBULLET.models import Actor, Critic
 
 
 class TD3Agent:
@@ -219,16 +221,15 @@ class TD3Agent:
             actor_loss, gradient = jax.value_and_grad(actor_loss_fn)(self.actor_params, self.critic_params, states)
             updates, self.actor_opt_state = self.actor_opt.update(gradient, self.actor_opt_state)
             self.actor_params = optax.apply_updates(self.actor_params, updates)
-            
-
+                
+    @jax.jit
+    def soft_update(target_params: hk.Params, online_params: hk.Params, tau: float = 0.005) -> hk.Params:
+        return jax.tree_map(lambda x, y: (1 - tau) * x + tau * y, target_params, online_params)
             # Soft update of target networks
             self.target_actor_params = soft_update(self.target_actor_params, self.actor_params, self.tau)
             self.target_critic_params = soft_update(self.target_critic_params, self.critic_params, self.tau)
             self.target_critic2_params = soft_update(self.target_critic2_params, self.critic2_params, self.tau)
 
-            writer.add_scalar("actor_loss", actor_loss, episode)
-            writer.add_scalar("std", self.std_schedule.std, timestep)
+          
        
-@jax.jit
-def soft_update(target_params: hk.Params, online_params: hk.Params, tau: float = 0.005) -> hk.Params:
-    return jax.tree_map(lambda x, y: (1 - tau) * x + tau * y, target_params, online_params)
+
