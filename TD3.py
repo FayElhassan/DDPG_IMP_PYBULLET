@@ -2,8 +2,8 @@ import jax
 import jax.numpy as jnp
 import haiku as hk
 import optax
-from DDPG_IMP_PYBULLET.utils import ScheduledNoise
-from DDPG_IMP_PYBULLET.models import Actor, Critic
+from utils import ScheduledNoise
+from models import Actor, Critic
 
 
 class TD3Agent:
