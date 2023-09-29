@@ -18,7 +18,6 @@ This repository contains a Deep Deterministic Policy Gradient (DDPG) implementat
 The env_config.py file provides a dictionary of environment names and their respective string identifiers. By default, it includes environments like:
 
 - HalfCheetah: HalfCheetahBulletEnv-v0
-- Ant: AntBulletEnv-v0
 - Hopper: HopperBulletEnv-v0
 - Walker2D: Walker2DBulletEnv-v0
 - Humanoid: HumanoidBulletEnv-v0
