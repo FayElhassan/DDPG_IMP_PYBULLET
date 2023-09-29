@@ -1,4 +1,5 @@
 import jax
+import numpy as np
 import jax.numpy as jnp
 import haiku as hk
 import optax
